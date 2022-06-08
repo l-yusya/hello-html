@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>HTML Sample</title>
 </head>
 
 <body style="font-family: Open Sans, sans-serif; font-weight: 300; line-height: 24px;">
-    <header>
-        <div style="width: 60%; margin-left: 300px;">
-            <ul style="list-style-type: none; display: flex; flex-direction: row; align-items: center; justify-content: space-around">
-                <li> <img src="img/logo.png" alt="Shchedryk Logo"> </li>
-                <li><a href="#about" style="font-size: 20px; text-decoration: none; color: maroon; font-weight: 600;">Про нас</a></li>
-                <li><a href="#apply" style="font-size: 20px; text-decoration: none; color: maroon; font-weight: 600;">Записатись до хору</a></li>
-                <li><a href="#contacts" style="font-size: 20px; text-decoration: none; color: maroon; font-weight: 600;">Контакти</a></li>
-            </ul>
+    <header id="header">
+        <div class="spacer">           
+        </div>
+        <div class="header__img-div">
+        <a href="index.html"><img id="header-img" src="img/logo.png" alt="Shchedryk Logo"></a>
+        </div>
+        <nav id="nav-bar">
+            <!-- <div class="header__img-div">
+                <a href="index.html"><img id="header-img" src="img/logo.png" alt="Shchedryk Logo"></a>
+            </div>               -->
+            <a href="#about" class="nav-link">Про нас</a>
+            <a href="#apply" class="nav-link">Записатись до хору</a>
+            <a href="#contacts" class="nav-link">Контакти</a>           
+        </nav>
+        <div class="spacer">           
         </div>
     </header>
     <h1 style="text-align: center;">Дитячий хор «ЩЕДРИК» <br>
@@ -105,6 +113,15 @@
                 <li>XIII «Summa Cum Laude» International Youth Music Festival у Відні (Австрія), 2019</li>
             </ul>
         </div>
+        <div class="video">
+            <!-- 
+                <video width="400px" controls>
+                    <source src="https://youtu.be/N9AISGoCg30">
+                </video>
+             -->
+             <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/N9AISGoCg30" title="YouTube video player" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section>
     <section style="display: flex; flex-direction:column; align-items: center" id="apply">
         <h2>Записатись до хору</h2>
@@ -113,7 +130,7 @@
             Для цього потрібно прийти на репетицію хору в п’ятницю о 16:30 або неділю о 10:00 за адресою:<br>
             м. Київ 02000, вул. Дарвіна 2, ПДЮ Печерського р-ну.
         </p>
-        <form id="choir-member-form">
+        <form id="form" action="https://www.freecodecamp.com/email-submit">
             <fieldset style="width: 600px; font-size: 14px; line-height: 30px">
                 <legend>Анкета хориста</legend>
                 <input type="text" placeholder="Прізвище" id="last-name" name="last-name" style="width: 600px;" required>
@@ -121,38 +138,40 @@
                 <input type="text" placeholder="По батькові" id="patronymic" name="patronymic" style="width: 600px;" required>
                 <input type="email" placeholder="Email" id="email" name="email" style="width: 600px;" required>
                 <input type="text" placeholder="Номер телефону" id="phone-number" name="phone-number" style="width: 600px;" required>
-                <label for="gender">Стать</label><br>
-                <input type="radio" id="gender" name="gender" value="male"> Чоловіча
-                <input type="radio" id="gender" name="gender" value="female"> Жіноча
+                <label>Стать</label><br>
+                <input type="radio" id="male" name="gender" value="male"> Чоловіча
+                <input type="radio" id="female" name="gender" value="female"> Жіноча
                 <br>
-                <label for="age">Дата народження &nbsp&nbsp&nbsp</label>
+                <label for="age">Дата народження &nbsp;&nbsp;&nbsp;</label>
                 <input type="date" id="age" name="age" style="width: 200px;" required>
                 <br>
-                <label for="place-of-study">Місце навчання &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                <label for="place-of-study">Місце навчання &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 <select id="place-of-study" name="place-of-study" style="width: 200px;">
                     <option>Школа</option>
                     <option>Коледж</option>
                     <option>ЗВО</option>
                 </select>
                 <input type="text" placeholder="Назва навчального закладу" id="edu-name" name="edu-name" style="width: 600px;">
-                <label for="edu-class">Клас / Курс &nbsp&nbsp&nbsp</label>
+                <label for="edu-class">Клас / Курс &nbsp;&nbsp;&nbsp;</label>
                 <input type="number" min="1" max="12" id="edu-class" name="edu-class" style="width: 60px;">
                 <input type="text" placeholder="ПІБ контактної особи або когось із батьків" id="parent-name" name="parent-name" style="width: 600px;">
                 <input type="text" placeholder="Телефон контактної особи або когось із батьків" id="parent-number" name="parent-number" style="width: 600px;">
-                <label for="experience">Чи є у дитини досвід співу?</label> <br>
-                <input type="checkbox" id="experience" name="experience" value="no"> Ні
+                <label>Чи є у дитини досвід співу?</label> <br>
+                <input type="checkbox" id="no" name="experience" value="no"> Ні
                 <br>
-                <input type="checkbox" id="experience" name="experience" value="yes-school"> Так, в шкільному хорі
+                <input type="checkbox" id="yes-school" name="experience" value="yes-school"> Так, в шкільному хорі
                 <br>
-                <input type="checkbox" id="experience" name="experience" value="yes-music-school"> Так, в хорі музичної школи
+                <input type="checkbox" id="yes-music-school" name="experience" value="yes-music-school"> Так, в хорі музичної школи
                 <br>
                 <label for="comment">Коментар</label> <br>
                 <textarea name="comment" id="comment" rows="5" cols="80"></textarea>
-                <button type="submit" formaction="" form="choir-member-form">Надіслати</button>
+                <input id="submit" type="submit" form="form">
             </fieldset>
         </form>
     </section>
     <hr>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <div id="fcc_test_suite_wrapper" style="position: relative !important; z-index: 99999 !important;"></div>
     <footer style="display: flex; flex-direction:column; align-items: center;">
         <address style="width: 60%; font-size: 18px" id="contacts">
             Наша адреса: 02004, м. Київ, вул. Дарвіна, 2 (Палац дітей та юнацтва Печерського району)
